@@ -1,0 +1,206 @@
+.body {
+	margin: 0 auto;
+	text-align: center;
+}
+#payment-form > div:nth-child(1) {
+	display: inline-block;
+	margin: 40px 40px 70px 0;
+	max-width: 540px;
+	vertical-align: top;
+	padding: 20px;
+}
+#payment-form > div:nth-child(2) {
+	display: inline-block;
+	margin: 195px 0 70px 0;
+	max-width: 540px;
+	vertical-align: top;
+	margin-left: 40px;
+	padding: 20px;
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 1em;
+	position: sticky !important;
+	top: 80px !important;
+}
+hr {
+	border-top: 1px solid rgb(221, 221, 221);
+}
+.btn-box {
+	width: 100%;
+	margin-bottom: 15px;
+}
+.btn-back {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	padding-top: 1.2em;
+	margin-left: -21px;
+}
+.btn-back:hover {
+	background-color: #f9f9f9;
+}
+.btn-back a{
+	margin: 20px 0;
+	color: #555;
+}
+.booking-info,
+.booking-payment,
+.booking-memo,
+.booking-refund,
+.booking-agree,
+.booking-btn {
+	display: block;
+}
+form {
+	margin: 0;
+}
+h3, h4 {
+	margin-top: 0;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #333;
+}
+h3 {
+	margin-bottom: 40px;
+	font-size: 26px;
+}
+h4 {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+p {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	color: #484848;
+}
+p.small {
+	font-family: 'Varela Round', 'Nanum Gothic';
+	font-size: 14px;
+	color: #888;
+}
+p.date {
+	margin-bottom: 20px;
+}
+.booking-payment h4 {
+	margin-bottom: 40px;
+}
+.booking-payment select,
+.booking-payment input#cr_no {
+	height: 40px;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+.booking-payment input {
+	height: 40px;
+	font-size: 16px;
+	box-shadow: none;
+}
+div.col {
+	padding: 0;
+}
+.booking-memo p.small {
+	margin-bottom: 20px;
+}
+textarea {
+	box-shadow: none!important;
+	height: 100px!important;
+	margin-bottom: 5px;
+}
+#memo_cnt {
+	font-size: 12px;
+}
+.booking-refund {
+	border-left: 6px solid rgb(255, 175, 15);
+	padding: 0 10px 0 21px;
+}
+label {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	color: #888;
+	word-break: keep-all;
+}
+#refund {
+	margin-bottom: 20px;
+}
+.booking-agree {
+	padding-right: 10px;
+	margin-bottom: 40px;
+}
+#agree {
+	font-size: 12px;
+	word-break: keep-all;
+}
+.booking-btn button {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+}
+.booking-house {
+	margin: 0 auto;
+	text-align: center;
+}
+.house-img,
+.house-info {
+	display: inline-block;
+	vertical-align: top;
+}
+.house-img {
+	width: 130px;
+	height: 120px;
+	overflow: hidden;
+	border-radius: .5em;
+	margin-right: 10px;
+}
+.house-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	vertical-align: bottom;
+	position: static !important;
+}
+.house-info h5 {
+	height: 30px;
+	width: 290px;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.house-info p,
+.house-info p.small {
+	font-size: 12px;
+	margin: 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	word-break: normal;
+}
+#score {
+	font-family: 'Varela Round', 'Nanum Gothic';
+	font-size: 13px;
+	color: #333;
+	margin-top: 17px;
+}
+.booking-charge-detail label,
+.booking-total label {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.booking-charge-detail::after {
+	content:"";
+	clear: both;
+	display: table;
+}
+.booking-charge-detail h4 {
+	margin-bottom: 30px;
+}
+.booking-charge-detail label,
+.booking-charge-detail label small,
+.booking-total label,
+.booking-total label small {
+	font-size: 16px;
+	color: #484848;
+}
+.booking-total label small {
+	font-weight: bold;
+}

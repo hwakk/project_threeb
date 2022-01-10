@@ -1,0 +1,389 @@
+.list-box {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.list-booking {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 20px;
+}
+
+.list-booking.future,
+.list-booking.past  {
+	display: block;
+	width: 702px;
+	margin: 40px auto 60px;
+}
+
+.list-title {
+	text-align: left;
+	margin: 0 0 20px 0;
+	padding-left: 26px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 24px;
+	color: #484848;
+}
+
+.future .list-content,
+.past .list-content {
+	max-height: 320px;
+}
+
+.list-none {
+	width: 650px;
+	height: 200px;
+	margin: 10px 0 0 26px;
+	padding-top: 88px;
+	border: 1px solid #e0e0e0;
+	border-radius: .25em;
+}
+
+.mb-3 {
+	width: 650px;
+	height: 242px;
+	margin: 10px 0 10px 26px !important;
+	padding: 20px;
+	border: 1px solid #e0e0e0;
+	border-radius: .25em;
+}
+
+.row {
+	display: block;
+	margin: 0;
+	text-align: center;
+}
+
+.col-md-4 {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	background: transparent;
+	overflow: hidden;
+	border-radius: .25em;
+}
+
+.img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	vertical-align: bottom;
+	position: static !important;
+}
+
+.col-md-9 {
+	display: inline-block;
+	width: 378px;
+	margin-top: 7px;
+	float: right;
+}
+
+p {
+	margin: 0;
+}
+
+.list-booking .card-body {
+	text-align: center;
+	margin: 0 auto;
+	padding: 0!important;
+	clear: both;
+}
+
+.card-body .card-title {
+	text-align: left;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 0px;
+	color: #0c5763;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	word-break: normal;
+}
+
+.card-body.location,
+.card-body.button {
+	display: inline-block;
+	padding: 0;
+	clear: none;
+}
+
+.card-body.location {
+	text-align: left;
+	float: left;
+	margin-bottom: 6px;
+	max-width: 230px;
+}
+
+.card-body.location .card-text {
+	margin-bottom: 4px;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	word-break: normal;
+}
+
+.card-body.button {
+	float: right;
+}
+
+.card-body.d-title,
+.card-body.d-value {
+	display: inline-block;
+	padding: 0;
+	clear: none;
+}
+
+.card-body.d-title {
+	text-align: left;
+	float: left;
+}
+
+.card-body.d-value {
+	text-align: right;
+	float: right;
+	padding-right: 14px!important;
+}
+
+.card-body.d-title .card-text,
+.card-body.d-value .card-text {
+	margin-top: 2px;
+	font-size: 12px;
+}
+
+/* form {
+	display: inline-block;
+} */
+
+.btn-info:hover {
+	background-color: #17a2b8 !important;
+	border-color: #17a2b8 !important;
+}
+
+.btn-detail:hover,
+.btn-cancel:hover,
+.btn-review:hover,
+.btn-mod:hover,
+.btn-mod-review:hover {
+	color: #fff;
+}
+
+/* 후기 */
+.list-review {
+	display: inline-block;
+	width: 312px;
+	margin: 40px auto 60px;
+}
+
+.list-review .list-content {
+	margin: 0 auto;
+	min-height: 630px;
+	max-height: 746px;
+}
+
+.list-review .list-title {
+	text-align: left;
+	margin: 0;
+	padding-left: 26px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 24px;
+	color: #484848;
+}
+
+.list-review .list-cnt {
+	text-align: right;
+	padding-right: 26px;
+}
+
+.list-review .list-none {
+	width: 260px;
+	height: 516px;
+}
+
+.list-review .card {
+	display: inline;
+	float: left;
+	margin: 10px 26px 10px ;
+	width: 260px;
+}
+
+.list-review .card-img {
+	height: 180px;
+	overflow: hidden;
+}
+
+.list-review img {
+	width: 100%;
+}
+
+.list-review .card-body {
+	width: 258px;
+	text-align: left;
+	font-size: 14px;
+	padding: 20px!important;
+}
+
+.list-review .card-body .card-score {
+	margin-bottom: 20px;
+}
+
+.list-review .card-body .card-title {
+	font-size: 14px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.list-review .card-body .card-location {
+	font-size: 12px;
+	margin-bottom: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	word-break: normal;
+}
+
+.list-review .card-body .card-date {
+	font-size: 12px;
+	margin-bottom: 20px;
+}
+
+.list-review .card-body .card-text {
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 20px;
+	font-size: 13px;
+}
+
+.list-review .card-body .card-button {
+	text-align: right;
+	bottom: 0px;
+}
+
+.modal-open {
+	padding-right: 0 !important;
+}
+
+#reviewModal {
+	padding-right: 0 !important;
+}
+
+.modal-backdrop {
+	z-index: 1000;
+}
+
+.modal-dialog {
+	z-index: 1040;
+}
+
+.modal-review {
+	color: #636363;
+	margin: -282px auto 0;
+	top: 50%;
+	margin-top: -232px;
+	height: 300px;
+}
+
+.modal-review .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	width: 500px;
+}
+
+.modal-viewReview {
+	color: #636363;
+	margin: -282px auto 0;
+	top: 50%;
+	margin-top: -232px;
+	height: 300px;
+}
+
+.modal-viewReview .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	width: 500px;
+}
+
+.modal-header {
+	position: relative;
+	justify-content: center;
+}
+
+.modal-title {
+	text-align: center;
+	font-size: 20px;
+	margin: -3px 0 5px;
+	font-weight: bold;
+	color: #333;
+}
+
+form {
+	width: 430px;
+}
+
+.close {
+	position: absolute;
+	top: -18px;
+	right: -5px;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.house-title {
+	display: block;
+	margin-top: 15px;
+	color: #0c5763;
+}
+
+.house-title p {
+	font-size: 15px;
+}
+
+p.small {
+	margin-bottom: 4px;
+	font-size: 13px;
+	color: #333;
+}
+
+.info .form-group {
+	margin-bottom: 0;
+}
+
+.info .info-title {
+	margin-right: 15px;
+}
+
+.info .info-mod {
+	margin-top: 54px;
+}
+
+textarea {
+	resize: none;
+	height: 150px !important;
+	margin-bottom: 4px;
+	text-align: left;
+}
+
+.form-control[readonly] {
+	background-color: #f5f5f5;
+}
+
+.btn-write,
+.btn-mod-write {
+	margin: 0 auto;
+	text-align: center;
+	float: right;
+	width: 80px;
+}

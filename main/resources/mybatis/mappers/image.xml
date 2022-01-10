@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+ <mapper namespace="mapper.image">
+	<resultMap id="imageResult" type="imageVO">
+		<result property="img_id" column="img_id"/>
+		<result property="house_id" column="house_id"/>
+		<result property="filename" column="filename"/>		
+	</resultMap>
+	
+	<select id="selectHouseImage" resultMap="imageResult" parameterType="int">
+		<![CDATA[
+			select * from threeb_house_img where house_id = #{house_id} order by img_id asc
+		]]>
+	</select>
+	
+	<select id="selectHouseImageOne" resultType="imageVO" parameterType="int">
+		<![CDATA[
+			select * from threeb_house_img where house_id = #{house_id} and rownum = 1
+		]]>
+	</select>
+</mapper>

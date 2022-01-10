@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.review">
+
+<resultMap type="reviewVO" id="reviewResult">
+	<result property="review_id" column="review_id"/>
+	<result property="parent_id" column="parent_id"/>
+	<result property="house_id" column="house_id"/>
+	<result property="booking_id" column="booking_id"/>
+	<result property="member_id" column="member_id"/>
+	<result property="review_score" column="review_score"/>
+	<result property="review_content" column="review_content"/>
+	<result property="review_writedate" column="review_writedate"/>
+</resultMap>
+	
+	<select id="selectNewReviewId" resultType="int">
+		<![CDATA[
+			select nvl(max(review_id)+1,1) from threeb_review
+		]]>
+	</select>
+	
+	<select id="selectGuestReview" resultType="reviewVO" parameterType="String">
+		<![CDATA[
+			select R.*, H.house_title, H.house_location, B.checkin, B.checkout 
+			from (select * from threeb_review where member_id=#{member_id}) R
+			inner join threeb_house H on R.house_id=H.house_id
+			inner join threeb_booking B on R.booking_id=B.booking_id
+			order by B.checkin desc
+		]]>
+	</select>
+	
+	<select id="selectHouseReview" resultType="reviewVO" parameterType="int">
+		<![CDATA[
+			select * from threeb_review where house_id=#{house_id}
+		]]>
+	</select>
+	
+	<select id="selectReviewInfo" resultType="reviewVO" parameterType="int">
+		<![CDATA[
+			select R.*, H.house_title, H.house_location, B.checkin, B.checkout 
+			from (select * from threeb_review where review_id=#{review_id}) R
+			inner join threeb_house H on R.house_id=H.house_id
+			inner join threeb_booking B on R.booking_id=B.booking_id
+		]]>
+	</select>
+	
+	<select id="selectReviewCnt" resultType="int" parameterType="String">
+		<![CDATA[
+			select count(*) from threeb_review 
+			where member_id=#{member_id}
+		]]>
+	</select>
+	
+	<insert id="insertReview" parameterType="reviewVO">
+		<![CDATA[
+			insert into threeb_review
+			(review_id, house_id, booking_id, 
+			member_id, review_score, review_content)
+			values
+			(#{review_id}, #{house_id}, #{booking_id}, 
+			#{member_id}, #{review_score}, #{review_content})
+		]]>
+	</insert>
+	
+	<update id="updateReview" parameterType="reviewVO">
+		<![CDATA[
+			update threeb_review 
+			set review_score=#{review_score}, review_content=#{review_content} 
+			where review_id=#{review_id}
+		]]>
+	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+		<![CDATA[
+			delete from threeb_review 
+			where review_id=#{review_id}
+		]]>
+	</delete>
+	
+</mapper>

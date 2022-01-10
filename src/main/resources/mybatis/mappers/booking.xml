@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.booking">
+
+<resultMap type="bookingVO" id="bookingResult">
+	<result property="booking_id" column="booking_id"/>
+	<result property="member_id" column="member_id"/>
+	<result property="house_id" column="house_id"/>
+	<result property="house_title" column="house_title"/>
+	<result property="house_location" column="house_location"/>
+	<result property="checkin" column="checkin"/>
+	<result property="checkout" column="checkout"/>
+	<result property="booking_total" column="booking_total"/>
+	<result property="booking_detail" column="booking_detail"/>
+	<result property="booking_amount" column="booking_amount"/>
+	<result property="memo" column="memo"/>
+	<result property="card_type" column="card_type"/>
+	<result property="card_num" column="card_num"/>
+	<result property="paydate" column="paydate"/>
+</resultMap>
+
+	<select id="selectNewBookingId" resultType="int">
+		<![CDATA[
+			select nvl(max(booking_id)+1,1) from threeb_booking
+		]]>
+	</select>
+
+	<select id="selectGuestBookingFuture" resultMap="bookingResult" parameterType="String">
+		<![CDATA[
+			select B.booking_id, B.member_id, B.house_id,
+			B.checkin, B.checkout, B.booking_total, B.booking_amount,
+			H.house_title, H.house_location,
+			nvl(avg(R.review_score),0) as review_score, count(R.review_id) as review_count
+			from (select * from threeb_booking where member_id=#{member_id} and round(sysdate-checkin)<0) B
+			left outer join threeb_review R on (B.house_id=R.house_id)
+			inner join threeb_house H on (B.house_id=H.house_id)
+			group by B.booking_id, B.member_id, B.house_id, 
+			B.checkin, B.checkout, B.booking_total, B.booking_amount,
+			H.house_title, H.house_location
+			order by B.checkin asc
+		]]>
+	</select>
+	
+	<select id="selectGuestBookingPast" resultMap="bookingResult" parameterType="String">
+		<![CDATA[
+			select B.booking_id, B.member_id, B.house_id,
+			B.checkin, B.checkout, B.booking_total, B.booking_amount,
+			H.house_title, H.house_location,
+			nvl(avg(R.review_score),0) as review_score, count(R.review_id) as review_count
+			from (select * from threeb_booking where member_id=#{member_id} and round(sysdate-checkin)>0) B
+			left outer join threeb_review R on (B.house_id=R.house_id)
+			inner join threeb_house H on (B.house_id=H.house_id)
+			group by B.booking_id, B.member_id, B.house_id, 
+			B.checkin, B.checkout, B.booking_total, B.booking_amount,
+			H.house_title, H.house_location
+			order by B.checkin desc
+		]]>
+	</select>
+	
+	<select id="selectHostBooking" resultType="bookingVO" parameterType="String">
+		<![CDATA[
+			select B.booking_id, B.member_id, B.house_id,
+			B.checkin, B.checkout, B.booking_total, B.booking_amount,
+			H.house_title, H.house_location,
+			nvl(avg(R.review_score),0) as review_score, count(R.review_id) as review_count
+			from (select * from threeb_house where member_id=#{member_id}) H
+			left outer join threeb_review R on (H.house_id=R.house_id)
+			inner join threeb_booking B on (H.house_id=B.house_id)
+			group by B.booking_id, B.member_id, B.house_id, 
+			B.checkin, B.checkout, B.booking_total, B.booking_amount,
+			H.house_title, H.house_location
+			order by B.checkin desc
+		]]>
+	</select>
+	
+	<select id="selectBookingInfo" resultType="bookingVO" parameterType="int">
+		<![CDATA[
+			select B.*, checkout-checkin as gap
+			from (select * from threeb_booking where booking_id=#{booking_id}) B
+		]]>
+	</select>
+	
+	<insert id="insertBooking" parameterType="bookingVO">
+		<![CDATA[
+			insert into threeb_booking
+			values(#{booking_id}, #{member_id}, #{house_id},
+			#{checkin}, #{checkout}, #{booking_total}, #{booking_detail}, #{booking_amount},
+			#{memo}, #{card_type}, #{card_num}, #{paydate})
+		]]>
+	</insert>
+	
+	<delete id="deleteBooking" parameterType="int">
+		<![CDATA[
+			delete from threeb_booking 
+			where booking_id=#{booking_id}
+		]]>
+	</delete>
+	
+</mapper>

@@ -1,0 +1,248 @@
+div {
+	margin: 0 auto;
+	text-align: center;
+}
+h3, h4 {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: normal;
+	font-size: 20px;
+	color: #333;
+}
+p, label {
+	color: #484848;
+}
+p {
+	font-size: 16px;
+}
+hr {
+	margin: 25px 0 30px;
+	clear: both;
+	border-top-color: #e0e0e0;
+}
+.body {
+	margin: 0 auto;
+	text-align: center;
+}
+.div-title,
+.div-img,
+.div-content2,
+.div-review,
+.div-location {
+	display: block;
+	max-width: 1100px;
+	margin-bottom: 25px;
+}
+.div-content1 {
+	display: block;
+	max-width: 1100px;
+}
+.div-title h3 {
+	font-size: 24px;
+	margin: 40px 0 15px;
+}
+.div-title p,
+.div-title small {
+	font-size: 14px;
+}
+.form-group label {
+	font-weight: normal;
+	font-size: 16px;
+	white-space: pre-wrap;
+	word-break: keep-all;
+	line-height: 1.8;
+}
+.carousel-inner {
+	display: inline-block;
+	width: 100%;
+	height: 620px;
+	background: transparent;
+	overflow: hidden;
+	border-radius: 1em;
+}
+.carousel-item {
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	overflow: hidden;
+}
+.carousel-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	vertical-align: bottom;
+	position: static !important;
+}
+.div-info {
+	display: inline-block;
+	margin-right: 80px;
+	max-width: 650px;
+	width: 100%;
+	float: left;
+}
+.div-info h4 {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: normal;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+.icon-group {
+	display: block;
+	margin-bottom: 25px;
+	float: left;
+	clear : both;
+}
+.icon, .icon-s {
+	display: inline-block;
+	vertical-align: top;
+}
+.icon {
+	margin: 0 auto;
+	text-align: center;
+}
+.icon i {
+	font-size: 24px;
+	width: 60px;
+	height: 24px;
+}
+.icon-s p {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.icon-s p.small {
+	font-weight: normal;
+	font-size: 14px;
+	max-width: 580px;
+	max-height: 48px;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.form-group {
+	display: block;
+	margin: 0 auto;
+}
+.house-facility {
+	display: inline-block;
+	margin-top: 15px;
+	float: left;
+	min-width: 200px;
+}
+.house-facility div {
+	float: left;
+	clear: both;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.div-booking {
+	display: inline-block;
+	position: relative;
+	max-width: 368px;
+	width: 100%;
+	vertical-align: top;
+	padding-bottom: 10px;
+}
+.booking-group {
+	display: block;
+	border: 1px solid #e0e0e0;
+	border-radius: 1em;
+	position: sticky !important;
+	top: 30px !important;
+	z-index: 100;
+	padding: 25px;
+}
+.booking-group p {
+	margin: 0;
+}
+.booking1 .charge {
+	float: left;
+	font-size: 16px;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+.booking1 .charge b {
+	font-size: 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.booking1 .score {
+	font-family: 'Varela Round', 'Nanum Gothic';
+	float: right;
+}
+.booking1 .score,
+.booking1 .score small {
+	font-size: 14px;
+}
+.booking2 {
+	clear: both;
+	display: block;
+	text-align: center;
+	border: 1px solid #b0b0b0;
+	border-radius: .5em;
+	margin-bottom: 15px;
+}
+.booking2 .checkin,
+.booking2 .checkout {
+	display: inline-block;
+	width: 50%;
+	padding: 10px;
+	float: left;
+}
+.booking2 .checkin p,
+.booking2 .checkout p,
+.booking2 .person p {
+	font-size: 12px;
+}
+.booking2 .checkin {
+	border-right: 1px solid #b0b0b0;
+}
+.booking2 .person {
+	width: 100%;
+	border-top: 1px solid #b0b0b0;
+	padding: 10px;
+	clear: both;
+}
+.booking3 {
+	clear: both;
+	margin-bottom: 40px;
+}
+.booking3 button {
+	font-size: 16px;
+	height: 50px;
+}
+.booking4 label,
+.booking5 label {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: normal;
+	font-size: 16px;
+	margin: 0;
+}
+.booking5 label {
+	font-weight: bolder;
+}
+.booking-group hr {
+	margin: 15px 0;
+}
+.div-review h4,
+.div-location h4 {
+	margin: 40px 0 20px;
+}
+.div-review h4.none {
+	margin: 20px 0;
+}
+.div-location {
+	width: 100%;
+	margin-bottom: 100px;
+}
+.map {
+	width: 100%;
+	height: 400px;
+	margin-bottom: 20px;
+}
+.div-location p {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+footer {
+	clear:both;
+}

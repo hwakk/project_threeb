@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+ <mapper namespace="mapper.search">
+	<resultMap id="houseResult" type="houseVO">
+		<result property="house_id" column="house_id"/>
+		<result property="member_id" column="member_id"/>
+		<result property="house_type" column="house_type"/>
+		<result property="house_type_detail" column="house_type_detail"/>
+		<result property="house_person" column="house_person"/>
+		<result property="house_room" column="house_room"/>
+		<result property="house_bed" column="house_bed"/>
+		<result property="house_bath" column="house_bath"/>
+		<result property="house_location" column="house_location"/>
+		<result property="house_location_etc" column="house_location_etc"/>
+		<result property="house_comfort_facility" column="house_comfort_facility"/>
+		<result property="house_secure_facility" column="house_secure_facility"/>
+		<result property="house_use_facility" column="house_use_facility"/>
+		<result property="house_content" column="house_content"/>
+		<result property="house_title" column="house_title"/>
+		<result property="house_charge" column="house_charge"/>
+		<result property="house_writedate" column="house_writedate"/>
+		<result property="review_score" column="review_score"/>
+		<result property="review_count" column="review_count"/>
+	</resultMap>
+	<resultMap id="imageResult" type="imageVO">
+		<result property="img_id" column="img_id"/>
+		<result property="house_id" column="house_id"/>
+		<result property="filename" column="filename"/>		
+	</resultMap>
+	
+	<select id="allCnt" resultType="int" parameterType="java.util.Map">
+		<![CDATA[
+			select count(*) from
+			(select * from threeb_house where house_id in
+			(select house_id from threeb_house where (house_id not in (select house_id from threeb_booking)
+			or house_id not in (select house_id from threeb_booking where checkout > #{start} and checkin < #{end})))
+			and house_person >= #{person})
+		]]>
+	</select>
+	
+	<select id="selectedCnt" resultType="int" parameterType="java.util.Map">
+		<![CDATA[
+			select count(*) from
+			(select * from threeb_house where house_id in
+			(select house_id from threeb_house where (house_id not in (select house_id from threeb_booking)
+			or house_id not in (select house_id from threeb_booking where checkout > #{start} and checkin < #{end})))
+			and house_location like '%'||#{location}||'%' and house_person >= #{person} order by house_id asc)
+		]]>
+	</select>
+	
+	<select id="selectAllHouse" resultMap="houseResult" parameterType="java.util.Map">
+		<![CDATA[
+			select H.house_id, H.member_id, H.house_title, H.house_type, H.house_type_detail, 
+            H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location, H.house_charge,
+			nvl(avg(R.review_score),0) as review_score, count(R.review_id) as review_count
+			from (select * from threeb_house where house_id in
+			(select house_id from threeb_house where (house_id not in (select house_id from threeb_booking)
+			or house_id not in (select house_id from threeb_booking where checkout > #{start} and checkin < #{end})))
+			and house_person >= #{person} order by house_id asc offset #{startNum} rows fetch first 4 rows only) H
+			left outer join threeb_review R on (H.house_id=R.house_id)
+			group by H.house_id, H.member_id, H.house_title, H.house_type, H.house_type_detail, 
+            H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location, H.house_charge
+		]]>
+	</select>
+	
+	<select id="selectHouse" resultMap="houseResult" parameterType="java.util.Map">
+		<![CDATA[
+			select H.house_id, H.member_id, H.house_title, H.house_type, H.house_type_detail, 
+            H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location, H.house_charge,
+			nvl(avg(R.review_score),0) as review_score, count(R.review_id) as review_count
+			from (select * from threeb_house where house_id in
+			(select house_id from threeb_house where (house_id not in (select house_id from threeb_booking)
+			or house_id not in (select house_id from threeb_booking where checkout > #{start} and checkin < #{end})))
+			and house_location like '%'||#{location}||'%' and house_person >= #{person} order by house_id asc 
+			offset #{startNum} rows fetch first 4 rows only) H
+			left outer join threeb_review R on (H.house_id=R.house_id)
+			group by H.house_id, H.member_id, H.house_title, H.house_type, H.house_type_detail, 
+            H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location, H.house_charge
+		]]>
+	</select>
+	
+</mapper>

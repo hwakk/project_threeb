@@ -1,0 +1,80 @@
+html, body {
+	font-family: 'Varela Round', 'Nanum Gothic';
+}
+input:focus {
+	outline: none;
+}
+textarea:focus {
+	outline: none;
+}
+button:focus {
+	outline: none;
+}
+#header {
+	background-color: transparent!important;
+}
+.navbar {
+	padding-left: 40px;
+	padding-right: 40px;
+	border: none!important;
+	min-height: 80px!important;
+	border-radius: none!important;
+}
+@media (min-width:768px) {
+	.navbar {
+		border-radius: none!important;
+	}
+}
+.navbar-default {
+	background-color: transparent!important;
+}
+.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .navbar-brand:focus
+	{
+	padding-left: 0;
+	font-size: 20px;
+	padding-right: 50px;
+}
+.navbar .navbar-brand b {
+	font-weight: bold;
+	color: #33cabb;
+}
+.navbar .nav li {
+	position: relative;
+}
+.navbar .nav-item .dropdown-menu a {
+	color: #777!important;
+}
+.navbar .nav-item .dropdown-menu a:hover {
+	color: #555!important;
+}
+.navbar .navbar-right li:firstChild a {
+	padding-right: 30px;
+}
+.navbar ul.nav li.active a, .navbar ul.nav li.open>a {
+	background: transparent!important;
+}
+.navbar-nav>li>.dropdown-menu {
+	margin-top: 5px!important;
+	padding: 10px 0;
+	border-radius: 8px!important;
+	box-shadow: 0 1px 15px rgba(0,0,0,.12);
+	border: none;
+}
+.dropdown-menu>li>a {
+	line-height: 2.2!important;
+}
+.dropdown-menu>li>a:hover {
+	background-color: #f0f0f0;
+}
+.dropdown-divider {
+	text-align: center;
+	border-top: 1px solid #e0e0e0;
+	margin: 10px 0;
+}
+.dropdown-toggle::after {
+	content: none!important;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 0px auto;
+}

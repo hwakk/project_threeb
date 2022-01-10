@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<!-- 기본레이아웃 -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+	
+	<!-- 메인 -->
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="title" value="메인페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
+	</definition>
+	
+	<!-- 로그인 -->
+	<definition name="/member/loginForm" extends="baseLayout">
+		<put-attribute name="title" value="로그인"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp"/>
+	</definition>
+	
+	<!-- 회원가입 -->
+	<definition name="/member/joinForm" extends="baseLayout">
+		<put-attribute name="title" value="회원가입"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/joinForm.jsp"/>
+	</definition>
+	
+	<!-- 나의예약 -->
+	<definition name="/mypage/guest" extends="baseLayout">
+		<put-attribute name="title" value="나의 예약"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/guest/guest.jsp"/>
+	</definition>
+	
+	<!-- 예약보기 -->
+	<definition name="/mypage/guest/viewBooking" extends="baseLayout">
+		<put-attribute name="title" value="예약내역"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/guest/viewBooking.jsp"/>
+	</definition>
+	
+	<!-- 숙소관리 -->
+	<definition name="/mypage/host" extends="baseLayout">
+		<put-attribute name="title" value="숙소 관리"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/host/host.jsp"/>
+	</definition>
+	
+	<!-- 숙소등록 -->
+	<definition name="/mypage/host/uploadForm" extends="baseLayout">
+		<put-attribute name="title" value="숙소 등록하기"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/host/uploadForm.jsp"/>
+	</definition>
+	
+	<!-- 계정관리 -->
+	<definition name="/member/update" extends="baseLayout">
+		<put-attribute name="title" value="계정 관리"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/update.jsp"/>
+	</definition>
+	
+	<!-- 숙소검색 -->
+	<definition name="/house/search" extends="baseLayout">
+		<put-attribute name="title" value="숙소 검색"/>
+		<put-attribute name="body" value="/WEB-INF/views/house/search.jsp"/>
+	</definition>
+	
+	<!-- 숙소상세 -->
+	<definition name="/house/info" extends="baseLayout">
+		<put-attribute name="title" value="숙소 상세"/>
+		<put-attribute name="body" value="/WEB-INF/views/house/info.jsp"/>
+	</definition>
+	
+	<!-- 숙소결제 -->
+	<definition name="/house/payment" extends="baseLayout">
+		<put-attribute name="title" value="숙소 결제"/>
+		<put-attribute name="body" value="/WEB-INF/views/house/payment.jsp"/>
+	</definition>
+</tiles-definitions>

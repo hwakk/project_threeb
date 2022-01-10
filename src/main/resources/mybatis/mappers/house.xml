@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.house">
+<resultMap type="houseVO" id="houseResult">
+	<result property="house_id" column="house_id"/>
+	<result property="member_id" column="member_id"/>
+	<result property="house_type" column="house_type"/>
+	<result property="house_type_detail" column="house_type_detail"/>
+	<result property="house_person" column="house_person"/>
+	<result property="house_room" column="house_room"/>
+	<result property="house_bed" column="house_bed"/>
+	<result property="house_bath" column="house_bath"/>
+	<result property="house_location" column="house_location"/>
+	<result property="house_location_etc" column="house_location_etc"/>
+	<result property="house_comfort_facility" column="house_comfort_facility"/>
+	<result property="house_secure_facility" column="house_secure_facility"/>
+	<result property="house_use_facility" column="house_use_facility"/>
+	<result property="house_content" column="house_content"/>
+	<result property="house_title" column="house_title"/>
+	<result property="house_charge" column="house_charge"/>
+	<result property="house_writedate" column="house_writedate"/>
+</resultMap>
+<resultMap type="imageVO" id="imageResult">
+	<result property="img_id" column="img_id"/>
+	<result property="filename" column="filename"/>
+	<result property="house_id" column="house_id"/>
+</resultMap>
+
+	<select id="selectNewHouseId" resultType="int">
+		<![CDATA[
+			select nvl(max(house_id)+1,1) from threeb_house
+		]]>
+	</select>
+	
+	<select id="selectNewImgId" resultType="int">
+		<![CDATA[
+			select nvl(max(img_id),0) from threeb_house_img
+		]]>
+	</select>
+	
+	<select id="selectListHouse" resultType="houseVO" parameterType="String">
+		<![CDATA[
+			select H.house_id, H.member_id, H.house_type, H.house_type_detail,
+			H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location,
+			H.house_comfort_facility, H.house_secure_facility, H.house_use_facility, 
+			H.house_title, H.house_charge,
+			nvl(avg(R.review_score),0) as review_score, count(R.review_id) as review_count
+			from (select * from threeb_house where member_id=#{member_id}) H
+			left outer join threeb_review R on (H.house_id=R.house_id)
+			group by H.house_id, H.member_id, H.house_type, H.house_type_detail,
+			H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location,
+			H.house_comfort_facility, H.house_secure_facility, H.house_use_facility, 
+			H.house_title, H.house_charge
+			order by house_id
+		]]>
+	</select>
+	
+	<select id="selectHouse" resultType="houseVO" parameterType="int">
+		<![CDATA[
+			select H.house_id, H.member_id, H.house_type, H.house_type_detail,
+			H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location, H.house_location_etc,
+			H.house_comfort_facility, H.house_secure_facility, H.house_use_facility, 
+			H.house_content, H.house_title, H.house_charge,
+			nvl(avg(R.review_score),0) as review_score, count(R.review_id) as review_count
+			from (select * from threeb_house where house_id=#{house_id}) H
+			left outer join threeb_review R on (H.house_id=R.house_id)
+			group by H.house_id, H.member_id, H.house_type, H.house_type_detail,
+			H.house_person, H.house_room, H.house_bed, H.house_bath, H.house_location, H.house_location_etc,
+			H.house_comfort_facility, H.house_secure_facility, H.house_use_facility,
+			H.house_content, H.house_title, H.house_charge
+		]]>
+	</select>
+	
+	<select id="selectHouseInfo" resultType="houseVO" parameterType="int">
+		<![CDATA[
+			select * from threeb_house where house_id=#{house_id}
+		]]>
+	</select>
+	
+	<insert id="insertNewHouse"  parameterType="java.util.Map">
+		<![CDATA[
+			insert into threeb_house
+			values(#{house_id}, #{member_id}, #{house_type}, #{house_type_detail}, 
+			#{house_person}, #{house_room}, #{house_bed}, #{house_bath}, #{house_location}, #{house_location_etc},
+			#{house_comfort_facility}, #{house_secure_facility}, #{house_use_facility}, 
+			#{house_content}, #{house_title}, #{house_charge}, sysdate)
+		]]>      
+	</insert>
+	
+	<insert id="insertNewImage" parameterType="java.util.Map">
+		<foreach collection="list" item="item" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
+			into threeb_house_img 
+			values(#{item.img_id}, #{item.filename}, #{item.house_id})
+		</foreach>
+	</insert>
+
+	<delete id="deleteHouse" parameterType="int">
+		<![CDATA[
+			delete from threeb_house
+			where house_id=#{house_id}
+		]]>
+	</delete>
+  
+</mapper>
